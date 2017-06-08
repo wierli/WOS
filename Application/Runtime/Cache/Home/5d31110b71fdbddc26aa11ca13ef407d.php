@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>扫地命令执行成功！

@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>TOKEN令牌校验失败！

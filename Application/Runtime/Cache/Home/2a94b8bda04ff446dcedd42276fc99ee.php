@@ -1,0 +1,312 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>/wos/index.php/Home/Index</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="alternate icon" type="image/png" href="/wos/Public/assets/i/favicon.png">
+  <link rel="stylesheet" href="/wos/Public/assets/css/amazeui.min.css"/>
+  <style>
+    .get {
+      background: #1E5B94;
+      color: #fff;
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .get-title {
+      font-size: 200%;
+      border: 2px solid #fff;
+      padding: 20px;
+      display: inline-block;
+    }
+
+    .get-btn {
+      background: #fff;
+    }
+
+    .detail {
+      background: #fff;
+    }
+
+    .detail-h2 {
+      text-align: center;
+      font-size: 150%;
+      margin: 40px 0;
+    }
+
+    .detail-h3 {
+      color: #1f8dd6;
+    }
+
+    .detail-p {
+      color: #7f8c8d;
+    }
+
+    .detail-mb {
+      margin-bottom: 30px;
+    }
+
+    .hope {
+      background: #0bb59b;
+      padding: 50px 0;
+    }
+
+    .hope-img {
+      text-align: center;
+    }
+
+    .hope-hr {
+      border-color: #149C88;
+    }
+
+    .hope-title {
+      font-size: 140%;
+    }
+
+    .about {
+      background: #fff;
+      padding: 40px 0;
+      color: #7f8c8d;
+    }
+
+    .about-color {
+      color: #34495e;
+    }
+
+    .about-title {
+      font-size: 180%;
+      padding: 30px 0 50px 0;
+      text-align: center;
+    }
+
+    .footer p {
+      color: GRAY;
+      margin: 0;
+      padding: 15px 0;
+      text-align: center;
+     
+    }
+    #hh{
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+  <div class="am-container">
+    <h1 class="am-topbar-brand">
+      <a href="#">WIERLI SYSTEM</a>
+    </h1>
+
+
+
+   
+  </div>
+</header>
+当前控制器<br>  /wos/index.php/Home/Index<br>
+返回值<br><div id="back"></div>
+TOKEN令牌<br><div id="token"></div>
+
+<button id="hh" type="button" class="am-btn am-btn-default am-btn-block">连接测试</button>
+<button id="door" type="button" class="am-btn am-btn-primary am-btn-block">防盗门视角</button>
+<button id="ziyou" type="button" class="am-btn am-btn-primary am-btn-block">自由视角</button>
+<button id="window" type="button" class="am-btn am-btn-secondary am-btn-block">窗帘视角</button>
+<button id="robot" type="button" class="am-btn am-btn-success am-btn-block">机器人视角</button>
+<button id="music" type="button" class="am-btn am-btn-warning am-btn-block">阿卡贝拉演奏</button>
+<button id="op_d" type="button" class="am-btn am-btn-danger am-btn-block">开门</button>
+<button id="cl_d" type="button" class="am-btn am-btn-default am-btn-block">关门</button>
+<button id="cl_w" type="button" class="am-btn am-btn-primary am-btn-block">关窗帘</button>
+<button id="op_w" type="button" class="am-btn am-btn-secondary am-btn-block">开窗帘</button>
+<button id="s_c" type="button" class="am-btn am-btn-success am-btn-block">开始扫地</button>
+
+
+
+<footer class="footer">
+  <p>© 2017 WIERLI DESIGN.</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/wos/Public/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/wos/Public/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="/wos/Public/assets/js/amazeui.min.js"></script>
+<SCRIPT TYPE="text/javascript">
+ 
+
+  $("#hh").click(function(){
+    $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+
+         token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/free?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+
+   
+ });
+
+
+
+   $("#door").click(function(){
+
+      $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+        $.ajax({url:"/wos/index.php/Home/Index/door?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+
+
+    $("#ziyou").click(function(){
+      $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/ziyou?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+
+    });
+
+
+    $("#window").click(function(){
+       $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/window?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+     }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+
+      $("#robot").click(function(){
+         $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/robot?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+     }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+
+      $("#music").click(function(){
+          $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/music?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+
+       $("#op_d").click(function(){
+         $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/op_d?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+     }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+
+       $("#cl_d").click(function(){
+         $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/cl_d?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+     }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+        $("#cl_w").click(function(){
+          $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/cl_w?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+
+       $("#op_w").click(function(){
+         $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/op_w?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+     }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+
+       $("#s_c").click(function(){
+         $.ajax({url:"/wos/index.php/Home/Index/GetToken",success:function(result){
+        $("#token").html(result);
+        token = $("#token").text();
+    $.ajax({url:"/wos/index.php/Home/Index/s_c?token="+token,success:function(result){
+        $("#back").html(result);
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#back").html('连接失败!'); 
+                    }});
+    }, error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        $("#token").html('连接失败!'); 
+                    }});
+ });
+
+</SCRIPT>
+</body>
+</html>

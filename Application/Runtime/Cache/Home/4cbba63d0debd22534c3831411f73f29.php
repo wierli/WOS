@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>连接服务器成功！

@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>切换防盗门视角成功！

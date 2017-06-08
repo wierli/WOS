@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>切换机器人视角成功！
